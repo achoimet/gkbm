@@ -6,7 +6,7 @@ ADD . /go/src/app
 
 RUN go get -d -v ./...
 
-RUN go build -v ./cmd/gkbm -o /go/bin/app
+RUN cd ./cmd/gkbm  && go build -v -o /go/bin/app
 
 # Now copy it into our base image.
 FROM gcr.io/distroless/base
