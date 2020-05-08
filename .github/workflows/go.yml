@@ -31,19 +31,9 @@ jobs:
 
     - name: BuildDeploy
       run: go build -v ./cmd/deploy
-      
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
 
     - name: Test
       run: go test -v ./cmd/gkbm
-
-  save:
-    name: Artefacts
-    runs-on: ubuntu-latest
-    steps:
 
     - uses: actions/upload-artifact@v2
       with:
