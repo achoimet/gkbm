@@ -30,7 +30,7 @@ jobs:
       run: go build -v ./cmd/gkbm
 
     - name: BuildDeploy
-      run: go build -v ./cmd/deploy
+      run: go build -v ./cmd/deploy && ls .
 
     - name: Test
       run: go test -v ./cmd/gkbm
@@ -38,7 +38,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: deploy
-        path: ./deploy
+        path: ls . && ./deploy
       
     - uses: actions/upload-artifact@v2
       with:
