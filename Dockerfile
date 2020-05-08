@@ -5,8 +5,8 @@ WORKDIR /go/src/app
 ADD . /go/src/app
 
 RUN go get -d -v ./...
-RUN ls
-RUN go build /go/src/app/cmd/gkbm -o /go/bin/app
+
+RUN go build -v ./cmd/gkbm -o /go/bin/app
 
 # Now copy it into our base image.
 FROM gcr.io/distroless/base
