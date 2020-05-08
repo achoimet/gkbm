@@ -34,4 +34,13 @@ jobs:
 
     - name: Test
       run: go test -v ./cmd/gkbm
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: deploy
+        path: ./cmd/deploy/deploy
       
+    - uses: actions/upload-artifact@v2
+      with:
+        name: gkbm
+        path: ./cmd/deploy/gkbm  
