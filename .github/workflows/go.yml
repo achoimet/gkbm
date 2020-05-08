@@ -26,8 +26,11 @@ jobs:
       run: |
         go get -v -t -d ./...
 
-    - name: Build
-      run: go build -v .
+    - name: BuildApp
+      run: go build -v ./cmd/gkbm
+
+    - name: BuildDeploy
+      run: go build -v ./cmd/deploy
 
     - name: Test
-      run: go test -v .
+      run: go test -v ./cmd/gkbm
