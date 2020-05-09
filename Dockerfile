@@ -6,7 +6,9 @@ ADD . /go/src/app
 
 RUN go get -d -v ./...
 
-RUN cd ./cmd/gkbm  && go build -v -o /go/bin/app
+WORKDIR /go/src/app/cmd/gkbm
+RUN go test
+RUN GOOS=linux GOARCH=amd64 go build -v -ldflags="-w -s" -o /go/bin/app
 
 # Now copy it into our base image.
 FROM gcr.io/distroless/base
