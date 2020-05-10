@@ -13,10 +13,10 @@ import (
 	"sigs.k8s.io/aws-iam-authenticator/pkg/token"
 )
 
-func AuthenticateToEks(clusterName string, cluster *api.Cluster, roleArn string, session *session.Session) (*kubernetes.Clientset, error) {
-
+func AuthenticateToEks(clusterName string, clusterUrl string, roleArn string, session *session.Session) (*kubernetes.Clientset, error) {
+	clusterApi := &api.Cluster{Server: clusterUrl}
 	clusters := make(map[string]*api.Cluster)
-	clusters[clusterName] = cluster
+	clusters[clusterName] = clusterApi
 	c := &api.Config{Clusters: clusters}
 
 	g, err := token.NewGenerator(true, false)
